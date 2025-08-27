@@ -8,6 +8,10 @@ void setup() {
   arduino = new Arduino(this, Arduino.list()[0], 57600); //change the [0] to a [1] or [2] etc. if your program doesn't work
 }
 
+float calcOffset(int r, int yOffset) {
+   return (sqrt(sq(r) - sq(yOffset)));
+}
+
 void draw() {
   int lightLevel = arduino.analogRead(5);
   System.out.println(lightLevel);
@@ -36,4 +40,16 @@ void draw() {
   //beak
   fill(255,205,0);
   triangle(250,250,240,270,260,270);
+
+  int yOffset = 75;
+  
+  fill(255,255,255);
+  beginShape();
+  vertex(250 - calcOffset(150, yOffset), 250+yOffset);
+  bezierVertex(250 - 75, 275 , 250 + 75, 275, 250 + calcOffset(150,yOffset), 250+yOffset);
+  endShape();
+  beginShape();
+  vertex(250 - calcOffset(150, yOffset), 250+yOffset);
+  bezierVertex(250 - 75, 425 , 250 + 75, 425, 250 + calcOffset(150,yOffset), 250+yOffset);
+  endShape();
 }
