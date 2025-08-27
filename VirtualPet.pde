@@ -5,7 +5,7 @@ Arduino arduino;
 void setup() {
   size(500, 500);
   background(170,225,245);
-  arduino = new Arduino(this, Arduino.list()[0], 57600); //change the [0] to a [1] or [2] etc. if your program doesn't work
+  arduino = new Arduino(this, Arduino.list()[0], 57600); //port 0 on computer lab desktop
 }
 
 float calcOffset(int r, int yOffset) {
