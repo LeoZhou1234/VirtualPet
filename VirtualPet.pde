@@ -25,7 +25,8 @@ void draw() {
   fill(255,255,255);
   ellipse(175,200,150,150);
   ellipse(325,200,150,150);
-  
+
+  //pupils
   int pupilDiameter = 115-lightLevel;
   if (pupilDiameter < 20) {
     pupilDiameter = 20;
@@ -41,6 +42,7 @@ void draw() {
   fill(255,205,0);
   triangle(250,250,240,270,260,270);
 
+  //white feathers
   int yOffset = 75;
   
   fill(255,255,255);
