@@ -1,9 +1,16 @@
+import processing.serial.*;
+import cc.arduino.*;
+Arduino arduino;
+
 void setup() {
   size(500, 500);
   background(170,225,245);
+  arduino = new Arduino(this, Arduino.list()[0], 57600); //change the [0] to a [1] or [2] etc. if your program doesn't work
 }
 
 void draw() {
+  int lightLevel = arduino.analogRead(5);
+  System.out.println(lightLevel);
   noStroke();
   
   //body
@@ -14,9 +21,17 @@ void draw() {
   fill(255,255,255);
   ellipse(175,200,150,150);
   ellipse(325,200,150,150);
+  
+  int pupilDiameter = 115-lightLevel;
+  if (pupilDiameter < 20) {
+    pupilDiameter = 20;
+  } else if (pupilDiameter > 115) {
+    pupilDiameter = 115;
+  }
+  
   fill(0,0,0);
-  ellipse(175,200,125,125);
-  ellipse(325,200,125,125);
+  ellipse(175,200,pupilDiameter,pupilDiameter);
+  ellipse(325,200,pupilDiameter,pupilDiameter);
   
   //beak
   fill(255,205,0);
