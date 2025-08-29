@@ -28,12 +28,9 @@ void draw() {
 
   //pupils
   int pupilDiameter = 115;
+
+  //update pupilDiameter based on lightLevel
   //pupilDiameter = max(pupilDiameter - lightLevel, 20);
-  //if (pupilDiameter < 20) {
-  //  pupilDiameter = 20;
-  //} else if (pupilDiameter > 115) {
-  //  pupilDiameter = 115;
-  //}
   
   fill(0,0,0);
   ellipse(175,200,pupilDiameter,pupilDiameter);
