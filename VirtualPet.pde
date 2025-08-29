@@ -1,11 +1,11 @@
-import processing.serial.*;
-import cc.arduino.*;
-Arduino arduino;
+//import processing.serial.*;
+//import cc.arduino.*;
+//Arduino arduino;
 
 void setup() {
   size(500, 500);
   background(170,225,245);
-  arduino = new Arduino(this, Arduino.list()[0], 57600); //port 0 on computer lab desktop
+  //arduino = new Arduino(this, Arduino.list()[0], 57600); //port 0 on computer lab desktop
 }
 
 float calcOffset(int r, int yOffset) {
@@ -13,8 +13,8 @@ float calcOffset(int r, int yOffset) {
 }
 
 void draw() {
-  int lightLevel = arduino.analogRead(5);
-  System.out.println(lightLevel);
+  //int lightLevel = arduino.analogRead(5);
+  //System.out.println(lightLevel);
   noStroke();
   
   //body
@@ -27,12 +27,13 @@ void draw() {
   ellipse(325,200,150,150);
 
   //pupils
-  int pupilDiameter = 115-lightLevel;
-  if (pupilDiameter < 20) {
-    pupilDiameter = 20;
-  } else if (pupilDiameter > 115) {
-    pupilDiameter = 115;
-  }
+  int pupilDiameter = 115;
+  //pupilDiameter = max(pupilDiameter - lightLevel, 20);
+  //if (pupilDiameter < 20) {
+  //  pupilDiameter = 20;
+  //} else if (pupilDiameter > 115) {
+  //  pupilDiameter = 115;
+  //}
   
   fill(0,0,0);
   ellipse(175,200,pupilDiameter,pupilDiameter);
@@ -40,7 +41,9 @@ void draw() {
   
   //beak
   fill(255,205,0);
-  triangle(250,250,240,270,260,270);
+  triangle(250,250,240,260,260,260);
+  fill(240,190,0);
+  triangle(250,270,240,260,260,260);
 
   //white feathers
   int yOffset = 75;
